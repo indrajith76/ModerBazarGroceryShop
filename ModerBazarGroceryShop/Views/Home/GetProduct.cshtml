@@ -1,0 +1,79 @@
+﻿@using ModerBazarGroceryShop.Models;
+@model ProductModel
+@{
+    ViewData["Title"] = "GetProduct";
+}
+
+<div class="container">
+    <h3 class="display-5">Product Details</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://offautan-uc1.azureedge.net/-/media/images/off/ph/products-en/products-landing/landing/off_overtime_product_collections_large_2x.jpg?la=en-ph" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://offautan-uc1.azureedge.net/-/media/images/off/ph/products-en/products-landing/landing/off_overtime_product_collections_large_2x.jpg?la=en-ph" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://offautan-uc1.azureedge.net/-/media/images/off/ph/products-en/products-landing/landing/off_overtime_product_collections_large_2x.jpg?la=en-ph" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 text-primary">
+                    <h1>@Model.ProductName</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-primary">
+                    <span class="label label-primary">Brand Name :</span>
+                    <span class="label label-primary">@Model.BrandName</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        সরিষার তেল যেমন চুলের জন্য উপকারী, ঠিক তেমনই এই তেল স্বাস্থ্যের জন্যও অনেক ভালো। বিশেষ করে সয়াবিন তেলের তুলনায় সরিষার তেল খাওয়া বেশি স্বাস্থ্যকর। তবে ওজন কমাতেও কি সাহায্য করে এই তেল? আসলে যে কোনো তেলেই স্যাচুরেটেড ও আনস্যাচুরেটেড ফ্যাট থাকে। স্যাচুরেটেড ফ্যাট আমাদের শরীরের জন্য খারাপ হলেও, আনস্যাচুরেটেড ফ্যাট আবার শরীরের জন্য উপকারী।</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary">
+                        Buy now
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary">
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+            
+            <hr />
+
+            <ul class="list-group">
+                <li class="list-group-item"><span class="fw-bold">Category -</span> @Model.ProductCategories</li>
+                <li class="list-group-item"><span class="fw-bold">Quantity -</span> @Model.Quantity</li>
+                <li class="list-group-item"><h6 class="fw-bold">Price -</h6> @Model.Price</li>
+            </ul>
+        </div>
+    </div>
+</div>
+

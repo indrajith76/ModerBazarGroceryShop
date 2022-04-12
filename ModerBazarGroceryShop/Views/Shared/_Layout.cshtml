@@ -4,44 +4,90 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ModerBazarGroceryShop</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ModerBazarGroceryShop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img id="navimg" src="~/image/navlogo.png" alt="navlogo" /></a>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                myAccount
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ModerBazarGroceryShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="row"  style="padding-top: 65px">
+            <div class="col-2 bg-danger overflow-auto">
+                <section class="position-fixed overflow-auto" style="scrollbar-base-color: blueviolet;height: 500px; width:15.8%; background-color: aquamarine">
+                    <ul>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                        <li>aaa</li>
+                    </ul>
+                </section>
+            </div>
+            <div class="col-10" style="padding-left: 0; padding-right:0">
+                <main role="main">
+                    @RenderBody()
+                </main>
+                <div class="border-top text-muted text-center" style="background-color: white; width: 100%; height: 50px;">
+                    <div style="padding-top: 13px">
+                        &copy; 2022 - ModerBazarGroceryShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+        
+    </div>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
