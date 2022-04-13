@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ModerBazarGroceryShop.Models.ProductModel>
+﻿@model IEnumerable<ProductModel>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -41,24 +41,6 @@
     </button>
 </section>
 
-<div class="py-5 bg-light">
-    <div class="container">
-        <h3 class="display-4">products</h3>
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="~/image/ProductImg/Bookimg.jpg" width="255" height="255" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-title">@item.ProductName</h6>
-                            <p class="card-text">@item.ProductDetails</p>
-                            <a href="#" class="btn btn-primary">add to bag</a>
-                            <a href="home/getproduct/@item.ProductID" class="btn btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
+<div>
+    <a href="product/getallproducts">Get all products</a>
 </div>

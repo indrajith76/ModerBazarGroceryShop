@@ -16,13 +16,15 @@ namespace ModerBazarGroceryShop.Controllers
             _productRepository = new ProductRepository();
         }
 
-        public List<ProductModel> GetAllProducts()
+        public ViewResult GetAllProducts()
         {
-            return _productRepository.GetAllProducts();
+            var data = _productRepository.GetAllProducts();
+            return View(data);
         }
-        public ProductModel GetProduct(int id)
+        public ViewResult GetProduct(int id)
         {
-            return _productRepository.GetProductById(id);
+            var data = _productRepository.GetProductById(id);
+            return View(data);
         }
         public List<ProductModel> SearchProduct(string productName, string brandName)
         {
