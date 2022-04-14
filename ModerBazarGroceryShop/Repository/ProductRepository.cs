@@ -1,4 +1,5 @@
-﻿using ModerBazarGroceryShop.Models;
+﻿using ModerBazarGroceryShop.Data;
+using ModerBazarGroceryShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,33 @@ namespace ModerBazarGroceryShop.Repository
 {
     public class ProductRepository
     {
+        private readonly ModerBazarContext _context = null;
+        public ProductRepository(ModerBazarContext context)
+        {
+            _context = context;
+        }
+
+        public int AddNewProduct(ProductModel model)
+        {
+            var newProduct = new Products()
+            {
+                ProductName = model.ProductName,
+                BrandName = model.BrandName,
+                ProductCategories = model.ProductCategories,
+                InStock = model.InStock,
+                ProductDetails = model.ProductDetails,
+                Quantity = model.Quantity,
+                Price = model.Price,
+                Image = model.Image,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow
+            };
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
+
+            return newProduct.ProductID;
+        }
+
         public List<ProductModel> GetAllProducts()
         {
             return DataSource();

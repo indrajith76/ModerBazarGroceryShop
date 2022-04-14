@@ -42,5 +42,11 @@
 </section>
 
 <div>
-    <a href="product/getallproducts">Get all products</a>
+    <a asp-controller="Category" class="btn btn-outline-danger">Get all category</a>
+</div><br />
+<div>
+    <a asp-controller="Product" asp-action="GetAllProducts" class="btn btn-success">Get all products</a>
+</div><br />
+<div>
+    <a asp-controller="Product" asp-action="AddNewProduct" class="btn btn-warning">Add Products</a>
 </div>

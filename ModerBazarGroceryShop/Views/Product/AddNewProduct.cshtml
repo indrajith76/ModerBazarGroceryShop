@@ -1,0 +1,66 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "AddNewProduct";
+}
+
+<div class="container">
+    <h3 class="display-4">Add new product</h3>
+    <hr />
+    @if (ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> You should added new product successfully.<br />
+            Click <a asp-controller="Product" asp-action="GetProduct" asp-route-id="@ViewBag.ProductId">here</a> to view the details
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <form method="post" asp-action="AddNewProduct" asp-controller="Product">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="ProductName"></label>
+                <input asp-for="ProductName" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="BrandName"></label>
+                <input asp-for="BrandName" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="ProductCategories"></label>
+                <input asp-for="ProductCategories" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="InStock"></label>
+                <input asp-for="InStock" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label asp-for="ProductDetails"></label>
+                <textarea asp-for="ProductDetails" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label asp-for="Image"></label>
+                <input type="file" asp-for="Image" class="form-control" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="submit" value="Add Product" class="btn btn-warning" />
+            </div>
+        </div>
+    </form>
+</div>
