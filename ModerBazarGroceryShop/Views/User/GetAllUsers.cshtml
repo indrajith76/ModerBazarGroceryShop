@@ -1,0 +1,38 @@
+﻿@model IEnumerable<UserModel>
+@{
+    ViewData["Title"] = "GetAllUsers";
+}
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <h3 class="display-4">GetAllCategories</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th scope="row">@item.UserID</th>
+                    <td>@item.UserName</td>
+                    <td>@item.Location</td>
+                    <td>@item.PhoneNo</td>
+                    <td>@item.Password</td>
+                    <td>
+                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

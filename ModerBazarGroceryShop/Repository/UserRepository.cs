@@ -1,4 +1,5 @@
-﻿using ModerBazarGroceryShop.Models;
+﻿using ModerBazarGroceryShop.Data;
+using ModerBazarGroceryShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,29 @@ namespace ModerBazarGroceryShop.Repository
 {
     public class UserRepository
     {
+        private readonly ModerBazarContext _context = null;
+        public UserRepository(ModerBazarContext context)
+        {
+            _context = context;
+        }
+
+        public int AddNewUser(UserModel model)
+        {
+            var newUser = new Users()
+            {
+                UserName = model.UserName,
+                Location = model.Location,
+                PhoneNo = model.PhoneNo,
+                Password = model.Password,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow
+            };
+            _context.Users.Add(newUser);
+            _context.SaveChanges();
+
+            return newUser.UserID;
+        }
+
         public List<UserModel> GetAllUsers()
         {
             return DataSource();

@@ -11,13 +11,14 @@ namespace ModerBazarGroceryShop.Controllers
     public class UserController : Controller
     {
         private readonly UserRepository _userRepository = null;
-        public UserController()
+        public UserController(UserRepository userRepository)
         {
-            _userRepository = new UserRepository();
+            _userRepository = userRepository;
         }
-        public List<UserModel> GetAllUsers()
+        public ViewResult GetAllUsers()
         {
-            return _userRepository.GetAllUsers();
+            var data = _userRepository.GetAllUsers();
+            return View(data);
         }
         public UserModel GetUser(int id)
         {
@@ -26,6 +27,22 @@ namespace ModerBazarGroceryShop.Controllers
         public List<UserModel> SearchUser(string location, int phoneNo)
         {
             return _userRepository.SearchUser(location, phoneNo);
+        }
+        public ViewResult AddNewUser(bool isSuccess = false, int userId = 0)
+        {
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.UserId = userId;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddNewUser(UserModel userModel)
+        {
+            int id = _userRepository.AddNewUser(userModel);
+            if (id > 0)
+            {
+                return RedirectToAction(nameof(AddNewUser), new { isSuccess = true, userId = id });
+            }
+            return View();
         }
     }
 }

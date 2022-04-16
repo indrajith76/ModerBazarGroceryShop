@@ -418,3 +418,7 @@ D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\net
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Category\GetAllCategories.cshtml.g.cs
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Category\AddNewCategory.cshtml.g.cs
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\User\GetAllUsers.cshtml.g.cs
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\User\AddNewUser.cshtml.g.cs

@@ -41,12 +41,27 @@
     </button>
 </section>
 
-<div>
-    <a asp-controller="Category" class="btn btn-outline-danger">Get all category</a>
-</div><br />
-<div>
-    <a asp-controller="Product" asp-action="GetAllProducts" class="btn btn-success">Get all products</a>
-</div><br />
-<div>
-    <a asp-controller="Product" asp-action="AddNewProduct" class="btn btn-warning">Add Products</a>
+<div class="row">
+    <div class="col-md-3">
+        <a asp-controller="Category" asp-action="GetAllCategories" class="btn btn-outline-danger">Get all category</a>
+    </div>
+    <div class="col-md-3">
+        <a asp-controller="Category" asp-action="AddNewCategory" class="btn btn-outline-danger">Add new category</a>
+    </div>
+    <div class="col-md-3">
+        <a asp-controller="Product" asp-action="GetAllProducts" class="btn btn-success">Get all products</a>
+    </div>
+    <div class="col-md-3">
+        <a asp-controller="Product" asp-action="AddNewProduct" class="btn btn-warning">Add Products</a>
+    </div>
 </div>
+<div class="row">
+    <div class="col-md-3">
+        <a asp-controller="User" asp-action="GetAllUsers" class="btn btn-outline-primary">Get All User</a>
+    </div>
+    <div class="col-md-3">
+        <a asp-controller="User" asp-action="AddNewUser" class="btn btn-outline-primary">Add new User</a>
+    </div>
+</div>
+
+

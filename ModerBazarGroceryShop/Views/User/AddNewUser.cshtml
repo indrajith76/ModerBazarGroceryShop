@@ -1,0 +1,45 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "AddNewUser";
+}
+
+<div class="container">
+    <h3 class="display-4">AddNewUser</h3>
+    <hr />
+    @if (ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> You should added new user successfully.<br />
+            Click <a asp-controller="User" asp-action="GetUser" asp-route-id="@ViewBag.UserID">here</a> to view the details
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <form method="post" asp-action="AddNewUser" asp-controller="User">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Location"></label>
+                <input asp-for="Location" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="PhoneNo"></label>
+                <input asp-for="PhoneNo" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="submit" value="Add User" class="btn btn-warning" />
+            </div>
+        </div>
+    </form>
+</div>
+

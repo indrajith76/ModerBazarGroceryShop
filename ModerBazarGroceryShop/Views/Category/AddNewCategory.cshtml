@@ -1,0 +1,30 @@
+﻿@model CategoryModel
+@{
+    ViewData["Title"] = "AddNewCategory";
+}
+
+<div class="container">
+    <h3 class="display-4">AddNewCategory</h3>
+    <hr />
+    @if (ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> You should added new category successfully.<br />
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <form method="post" asp-action="AddNewCategory" asp-controller="Category">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label asp-for="CategoryName"></label>
+                <input asp-for="CategoryName" class="form-control" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="submit" value="Add Category" class="btn btn-warning" />
+            </div>
+        </div>
+    </form>
+</div>
+
