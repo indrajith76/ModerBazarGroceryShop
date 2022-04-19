@@ -15,21 +15,26 @@ namespace ModerBazarGroceryShop.Controllers
         {
             _categoryRepository = categoryRepository;
         }
-        public ViewResult GetAllCategories()
+        public async Task<ViewResult> GetAllCategories()
         {
-            var data = _categoryRepository.GetAllCategories();
+            var data = await _categoryRepository.GetAllCategories();
             return View(data);
         }
 
-        public ViewResult GetCategoryById(int id)
+        public async Task<ViewResult> EditCategory(int id)
         {
-            var data = _categoryRepository.GetCategoryById(id);
+            var data = await _categoryRepository.EditCategoryById(id);
             return View(data);
         }
-        public List<CategoryModel> SearchCategories(string categoryName)
-        {
-            return _categoryRepository.SearchCategories(categoryName);
-        }
+        //public ViewResult GetCategoryById(int id)
+        //{
+        //    var data = _categoryRepository.GetCategoryById(id);
+        //    return View(data);
+        //}
+        //public List<CategoryModel> SearchCategories(string categoryName)
+        //{
+        //    return _categoryRepository.SearchCategories(categoryName);
+        //}
         public ViewResult AddNewCategory(bool isSuccess = false, int categorytId = 0)
         {
             ViewBag.IsSuccess = isSuccess;
@@ -47,5 +52,27 @@ namespace ModerBazarGroceryShop.Controllers
             }
             return View();
         }
+
+        public ViewResult EditNewCategory(bool isSuccess = false, int categorytId = 0)
+        {
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.CategoryID = categorytId;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EditNewCategory(CategoryModel categoryModel)
+        {
+            _categoryRepository.EditNewCategory(categoryModel);
+            
+            return RedirectToAction(nameof(GetAllCategories));
+        }
+
+        public async Task<IActionResult> DeleteCategory(int categorytId = 0)
+        {
+            await _categoryRepository.DeleteCategoryById(categorytId);
+            return RedirectToAction(nameof(GetAllCategories));
+        }
+
     }
 }

@@ -1,0 +1,59 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "EditProduct";
+}
+
+<div class="container">
+    <h3 class="display-4">Edit Product</h3>
+    <hr />
+    @*@if (ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> You should added new product successfully.<br />
+            Click <a asp-controller="Product" asp-action="GetProduct" asp-route-id="@ViewBag.ProductId">here</a> to view the details
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }*@
+    
+    <form method="post" enctype="multipart/form-data" asp-action="SaveEditProduct" asp-controller="Product" class="row g-3">
+        <input type="hidden" asp-for="ProductID" />
+        <div class="col-md-6">
+            <label asp-for="ProductName" class="form-label"></label>
+            <input asp-for="ProductName" value="@Model.ProductName" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="BrandName" class="form-label"></label>
+            <input asp-for="BrandName" value="@Model.BrandName" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="ProductCategoriesId" class="form-label"></label>
+            <select asp-for="ProductCategoriesId" asp-items="ViewBag.Categories" id="inputState" class="form-select">
+                <option value="@Model.ProductCategories">@Model.ProductCategories</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="InStock" class="form-label"></label>
+            <input asp-for="InStock" value="@Model.InStock" class="form-control">
+        </div>
+        <div class="col-md-12">
+            <label asp-for="ProductDetails" class="form-label"></label>
+            <textarea asp-for="ProductDetails" class="form-control">@Model.ProductDetails</textarea>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Quantity" class="form-label"></label>
+            <input asp-for="Quantity" value="@Model.Quantity" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" value="@Model.Price" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="ProductImage" class="form-label"></label>
+            <input asp-for="ProductImage" class="form-control"><img src="@Model.Image" width="100" />
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+    </form>
+</div>
+

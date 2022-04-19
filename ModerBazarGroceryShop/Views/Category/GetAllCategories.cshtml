@@ -20,7 +20,11 @@
                 <tr>
                     <th scope="row">@item.CategoryID</th>
                     <td>@item.CategoryName</td>
-                    <td><a href="getproduct/@item.CategoryID" class="btn btn-primary">Details</a></td>
+                    <td>
+                        @**@
+                        <a asp-action="editcategory" asp-route-id="@item.CategoryID" class="btn btn-warning">Edit</a>
+                        <a asp-action="deletecategory" asp-route-categorytId="@item.CategoryID" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
             }
             </tbody>

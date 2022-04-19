@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,9 @@ namespace ModerBazarGroceryShop.Data
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string BrandName { get; set; }
-        public string ProductCategories { get; set; }
+        public int CategoryID { get; set; }
+        [ForeignKey("CategoryID")]
+        public Categories Categories { get; set; }
         public string InStock { get; set; }
         public string ProductDetails { get; set; }
         public string Quantity { get; set; }
@@ -20,5 +23,6 @@ namespace ModerBazarGroceryShop.Data
         public string Image { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
+
     }
 }

@@ -15,7 +15,7 @@ namespace ModerBazarGroceryShop.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "3.1.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -44,6 +44,9 @@ namespace ModerBazarGroceryShop.Migrations
                     b.Property<string>("BrandName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -55,9 +58,6 @@ namespace ModerBazarGroceryShop.Migrations
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
-
-                    b.Property<string>("ProductCategories")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductDetails")
                         .HasColumnType("nvarchar(max)");
@@ -72,6 +72,8 @@ namespace ModerBazarGroceryShop.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ProductID");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
                 });
@@ -104,6 +106,15 @@ namespace ModerBazarGroceryShop.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ModerBazarGroceryShop.Data.Products", b =>
+                {
+                    b.HasOne("ModerBazarGroceryShop.Data.Categories", "Categories")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

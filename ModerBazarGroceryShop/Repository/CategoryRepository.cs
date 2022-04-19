@@ -1,4 +1,6 @@
-﻿using ModerBazarGroceryShop.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ModerBazarGroceryShop.Data;
 using ModerBazarGroceryShop.Models;
 using System;
 using System.Collections.Generic;
@@ -26,25 +28,73 @@ namespace ModerBazarGroceryShop.Repository
             return newCategory.CategoryID;
         }
 
-        public List<CategoryModel> GetAllCategories()
+        public async Task<List<CategoryModel>> GetAllCategories()
         {
-            return DataSource();
-        }
-        public CategoryModel GetCategoryById(int id)
-        {
-            return DataSource().Where(x => x.CategoryID == id).FirstOrDefault();
-        }
-        public List<CategoryModel> SearchCategories(string categoryName)
-        {
-            return DataSource().Where(x => x.CategoryName.Contains(categoryName)).ToList();
-        }
-        private List<CategoryModel> DataSource()
-        {
-            return new List<CategoryModel>()
+            
+            var categories = new List<CategoryModel>();
+            var allcategories = await _context.Categories.ToListAsync();
+            if (allcategories?.Any() == true)
             {
-                new CategoryModel(){CategoryID = 1, CategoryName ="Rice"},
-                new CategoryModel(){CategoryID = 2, CategoryName ="Suger"}
-            };
+                foreach (var category in allcategories)
+                {
+                    categories.Add(new CategoryModel()
+                    {
+                        CategoryID = category.CategoryID,
+                        CategoryName = category.CategoryName
+
+                    });
+                }
+            }
+            return categories;
         }
+        
+
+        public async Task<CategoryModel> EditCategoryById(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
+            {
+                var categoryDetails = new CategoryModel()
+                {
+                    CategoryID = category.CategoryID,
+                    CategoryName = category.CategoryName
+                };
+                return categoryDetails;
+            }
+            return null;
+        }
+
+        
+        public int EditNewCategory(CategoryModel model)
+        {
+            var newCategory = new Categories()
+            {
+                CategoryID = model.CategoryID,
+                CategoryName = model.CategoryName
+            };
+            _context.Categories.Update(newCategory);
+            _context.SaveChanges();
+
+            return newCategory.CategoryID;
+        }
+
+        
+        public async Task<CategoryModel> DeleteCategoryById(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
+            {
+                var categoryDel = new CategoryModel()
+                {
+                    CategoryID = category.CategoryID,
+                    CategoryName = category.CategoryName
+                };
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+                return categoryDel;
+            }
+            return null;
+        }
+
     }
 }
