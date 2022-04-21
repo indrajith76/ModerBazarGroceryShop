@@ -9,15 +9,19 @@
     @if (ViewBag.IsSuccess)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Congratulations!</strong> You should added new category successfully.<br />
+            <strong>Congratulations!</strong> You added new category successfully.<br />
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
-    <form method="post" asp-action="AddNewCategory" asp-controller="Category">
+    <form method="post" enctype="multipart/form-data" asp-action="AddNewCategory" asp-controller="Category">
         <div class="row">
             <div class="form-group col-md-12">
                 <label asp-for="CategoryName"></label>
                 <input asp-for="CategoryName" class="form-control" />
+            </div>
+            <div class="col-md-12">
+                <label asp-for="CatImage" class="form-label"></label>
+                <input asp-for="CatImage" class="form-control">
             </div>
         </div><br />
         <div class="row">

@@ -11,6 +11,7 @@ namespace ModerBazarGroceryShop.Data
         [Key]
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
+        public string CategoryImage { get; set; }
         public ICollection<Products> Products { get; set; }
     }
 }

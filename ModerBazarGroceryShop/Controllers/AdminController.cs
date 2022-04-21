@@ -16,6 +16,13 @@ namespace ModerBazarGroceryShop.Controllers
         {
             _adminRepository = new AdminRepository();
         }
+
+        public ViewResult Index()
+        {
+            return View();
+
+        }
+
         public List<AdminModel> GetAllAdmin()
         {
             return _adminRepository.GetAllAdmin();

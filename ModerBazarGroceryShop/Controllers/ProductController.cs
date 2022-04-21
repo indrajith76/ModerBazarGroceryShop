@@ -37,9 +37,18 @@ namespace ModerBazarGroceryShop.Controllers
             var data = await _productRepository.GetProductById(id);
             return View(data);
         }
-        public List<ProductModel> SearchProduct(string productName, string brandName)
+
+        public async Task<ViewResult> GetByCategory(int id)
         {
-            return _productRepository.SearchProduct(productName, brandName);
+            var data = await _productRepository.GetProductByCatId(id);
+            return View("GetAllProducts", data);
+        }
+
+
+        public async Task<IActionResult> SearchProduct(string searchText)
+        {
+            var data=await _productRepository.SearchProduct(searchText);
+            return View("GetAllProducts", data);
         }
         public async Task<ViewResult> AddNewProduct(bool isSuccess = false, int productId = 0)
         {
@@ -87,24 +96,48 @@ namespace ModerBazarGroceryShop.Controllers
             return View(data);
         }
 
-        public async Task<ViewResult> EditProduct(int id)
+        [HttpGet]
+        public async Task<IActionResult> EditProduct(int id)
         {
             var data = await _productRepository.EditProductById(id);
+            if (data==null)
+            {
+                return NoContent();
+            }
+            ViewBag.Categories = new SelectList(await _categoryRepository.GetAllCategories(), "CategoryID", "CategoryName",data?.ProductCategoriesId);
             return View(data);
         }
 
-        public ViewResult SaveEditProduct(bool isSuccess = false, int productId = 0)
-        {
-            ViewBag.IsSuccess = isSuccess;
-            ViewBag.ProductId = productId;
-            return View();
-        }
+        //public ViewResult SaveEditProduct(bool isSuccess = false, int productId = 0)
+        //{
+        //    ViewBag.IsSuccess = isSuccess;
+        //    ViewBag.ProductId = productId;
+        //    return View();
+        //}
 
         [HttpPost]
-        public IActionResult SaveEditProduct(ProductModel productModel)
+        public async Task<IActionResult> SaveEditProduct(ProductModel productModel)
         {
-            _productRepository.EditProducts(productModel);
-            return RedirectToAction(nameof(AllProductsData));
+            if (ModelState.IsValid)
+            {
+                if (productModel.ProductImage != null)
+                {
+                    string folder = "image/ProductImg/";
+                    folder += Guid.NewGuid().ToString() + "_" + productModel.ProductImage.FileName;
+
+                    productModel.Image = "/" + folder;
+
+                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+
+                    await productModel.ProductImage.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+
+                int id = await _productRepository.EditProductsAsync(productModel);
+                return RedirectToAction(nameof(AllProductsData));
+            }
+            ViewBag.Categories = new SelectList(await _categoryRepository.GetAllCategories(), "CategoryID", "CategoryName");
+
+            return View(productModel);
         }
 
         public async Task<IActionResult> DeleteProduct(int productId = 0)

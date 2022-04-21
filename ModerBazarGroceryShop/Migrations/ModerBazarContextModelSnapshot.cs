@@ -26,6 +26,9 @@ namespace ModerBazarGroceryShop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CategoryImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 

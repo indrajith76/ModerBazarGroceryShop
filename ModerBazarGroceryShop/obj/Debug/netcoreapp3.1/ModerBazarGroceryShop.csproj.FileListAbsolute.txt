@@ -393,7 +393,6 @@ D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\net
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.csproj.AssemblyReference.cache
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.GeneratedMSBuildEditorConfig.editorconfig
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.AssemblyInfoInputs.cache
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.AssemblyInfo.cs
@@ -414,6 +413,7 @@ D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\net
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Product\AddNewProduct.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Product\AllProductsData.cshtml.g.cs
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Product\EditProduct.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Product\GetAllProducts.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Product\GetProduct.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -430,4 +430,5 @@ D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\net
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.dll
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.pdb
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.genruntimeconfig.cache
-D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Product\EditProduct.cshtml.g.cs
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.csproj.AssemblyReference.cache
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs

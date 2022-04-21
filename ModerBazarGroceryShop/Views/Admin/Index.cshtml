@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Admin-Panel</title>
+    <style>
+        body {
+            background-image: url("https://assets.epicurious.com/photos/57eebe2eb382c3c017d3fff0/16:9/w_2560%2Cc_limit/supermarket-shelves.jpg");
+            background-size: cover;
+            background-attachment:fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="height: 80px; background-color: #fdd670">
+        <div class="row" style="padding-top:7px">
+            <div class="col-6">
+                <img src="~/image/navlogo.png" style="height:60px" />
+            </div>
+            <div class="col-6 text-center">
+                <span style="font-size: 40px; font-weight: bold; color: #4d4b4b">Admin Panel Of ModerBazer</span>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="height:90vh; background-color:white; opacity:0.9">
+        <div class="row" style="padding: 10px">
+            <div class="col-3">
+                <a asp-controller="Product" asp-action="AllProductsData" class="btn btn-success">All products Data</a>
+            </div>
+            <div class="col-3">
+                <a asp-controller="Product" asp-action="GetAllProducts" class="btn btn-success">Get all products</a>
+            </div>
+            <div class="col-3">
+                <a asp-controller="Product" asp-action="AddNewProduct" class="btn btn-warning">Add Products</a>
+            </div>
+        </div>
+        <hr />
+        <div class="row" style="padding: 10px">
+            <div class="col-3">
+                <a asp-controller="Category" asp-action="GetAllCategories" class="btn btn-outline-danger">Get all category</a>
+            </div>
+            <div class="col-3">
+                <a asp-controller="Category" asp-action="AddNewCategory" class="btn btn-outline-danger">Add new category</a>
+            </div>
+        </div>
+        <hr />
+        <div class="row" style="padding: 10px">
+            <div class="col-3">
+                <a asp-controller="User" asp-action="GetAllUsers" class="btn btn-outline-primary">Get All User</a>
+            </div>
+            <div class="col-3">
+                <a asp-controller="User" asp-action="AddNewUser" class="btn btn-outline-primary">Add new User</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

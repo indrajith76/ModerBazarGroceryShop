@@ -20,7 +20,8 @@ namespace ModerBazarGroceryShop.Repository
         {
             var newCategory = new Categories()
             {
-                CategoryName = model.CategoryName
+                CategoryName = model.CategoryName,
+                CategoryImage = model.CategoryImage
             };
             _context.Categories.Add(newCategory);
             _context.SaveChanges();
@@ -40,7 +41,8 @@ namespace ModerBazarGroceryShop.Repository
                     categories.Add(new CategoryModel()
                     {
                         CategoryID = category.CategoryID,
-                        CategoryName = category.CategoryName
+                        CategoryName = category.CategoryName,
+                        CategoryImage = category.CategoryImage
 
                     });
                 }
@@ -57,7 +59,8 @@ namespace ModerBazarGroceryShop.Repository
                 var categoryDetails = new CategoryModel()
                 {
                     CategoryID = category.CategoryID,
-                    CategoryName = category.CategoryName
+                    CategoryName = category.CategoryName,
+                    CategoryImage = category.CategoryImage
                 };
                 return categoryDetails;
             }
@@ -65,15 +68,16 @@ namespace ModerBazarGroceryShop.Repository
         }
 
         
-        public int EditNewCategory(CategoryModel model)
+        public async Task<int> SaveEditCategoryAsync(CategoryModel model)
         {
             var newCategory = new Categories()
             {
                 CategoryID = model.CategoryID,
-                CategoryName = model.CategoryName
+                CategoryName = model.CategoryName,
+                CategoryImage = model.CategoryImage
             };
             _context.Categories.Update(newCategory);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return newCategory.CategoryID;
         }

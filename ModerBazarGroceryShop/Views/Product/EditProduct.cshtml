@@ -27,13 +27,18 @@
         </div>
         <div class="col-md-6">
             <label asp-for="ProductCategoriesId" class="form-label"></label>
-            <select asp-for="ProductCategoriesId" asp-items="ViewBag.Categories" id="inputState" class="form-select">
+            <select asp-for="ProductCategoriesId" asp-items="ViewBag.Categories"  class="form-select">
                 <option value="@Model.ProductCategories">@Model.ProductCategories</option>
             </select>
         </div>
         <div class="col-md-6">
             <label asp-for="InStock" class="form-label"></label>
-            <input asp-for="InStock" value="@Model.InStock" class="form-control">
+            @*<input asp-for="InStock" value="@Model.InStock" class="form-control">*@
+            <select asp-for="InStock" class="form-select">
+                <option>@Model.InStock</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label asp-for="ProductDetails" class="form-label"></label>
@@ -52,7 +57,7 @@
             <input asp-for="ProductImage" class="form-control"><img src="@Model.Image" width="100" />
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">Save Product</button>
+            <button type="submit" class="btn btn-primary">Update Product</button>
         </div>
     </form>
 </div>

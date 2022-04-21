@@ -2,9 +2,9 @@
 @{
     ViewData["Title"] = "Product details " + Model.ProductName;
 }
-
+<br />
 <div class="container">
-    <h3 class="display-5">Product Details</h3>
+    @*<h3 class="display-5">Product Details</h3>*@
     <div class="row">
         <div class="col-md-6">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -71,8 +71,8 @@
             <ul class="list-group">
                 <li class="list-group-item"><span class="fw-bold">Category -</span> @Model.ProductCategories</li>
                 <li class="list-group-item"><span class="fw-bold">Quantity -</span> @Model.Quantity</li>
-                <li class="list-group-item"><strong class="fw-bold">Price -</strong> @Model.Price</li>
+                <li class="list-group-item"><strong class="fw-bold">Price -</strong> @Model.Price ৳</li>
             </ul>
         </div>
     </div>
-</div>
+</div><br />

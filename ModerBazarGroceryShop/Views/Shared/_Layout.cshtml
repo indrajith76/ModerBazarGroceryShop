@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject ModerBazarGroceryShop.Repository.CategoryRepository _category;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,16 +20,51 @@
     </environment>
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        li{
+            list-style-type: none;
+        }
+        #sidebar ul a{
+            display: block;
+            box-sizing: border-box;
+            color: black;
+            text-decoration: none;
+        }
+        #sidebar ul li:hover {
+            background-color: white;
+            background-image: linear-gradient(to right, #E4E6E9, #f0e196);
+        }
+        .searchform {
+            position: relative;
+            margin-left: 100px;
+            width: 775px;
+
+        }
+        .searchbtn {
+            position: relative;
+            right: 54px;
+            background: #ffb96e;
+            border: none;
+            border-radius: 5px;
+            display: inline-block;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-sm navbar-light fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img id="navimg" src="~/image/navlogo.png" alt="navlogo" /></a>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex searchform" method="get" asp-controller="Product" asp-action="SearchProduct">
+                    <input class="form-control me-2 shadow-none" type="search" id="searchText" name="searchText" placeholder="Search" aria-label="Search">
+                    <button class="searchbtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
+                @*<form style="position:relative; left:100px">
+                    <input type="search" />
+                    <button>Search</button>
+                </form>*@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -58,30 +94,19 @@
         </nav>
         <div class="row"  style="padding-top: 65px">
             <div class="col-2 bg-danger overflow-auto">
-                <section class="position-fixed overflow-auto" style="scrollbar-base-color: blueviolet; height: 100%; width: 16.8%; left: 0px; background-color: white; border-right: #e4e4e4 solid 1px">
-                    <ul>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
-                        <li>aaa</li>
+                <section id="sidebar" class="position-fixed overflow-auto" style="scrollbar-base-color: blueviolet; height: 90%; width: 16.8%; left: 0px; background-color: white; border-right: #e4e4e4 solid 1px; padding-top: 10px">
+                    <ul style="padding-left: 12px">
+                        <li><a href="#">Coupons</a></li>
+                        <li><a href="#">Offers <span style="border:solid 1px red; width:fit-content; font-size:9px; color:red; border-radius:4px; padding:2px 3px">18</span></a></li>
+                        <li><a href="#">Food Aid</a></li>
+                        <li><a href="#">Recipes</a></li>
+                    </ul>
+                    <hr />
+                    <ul style="padding-left: 12px">
+                        @foreach (var item in await _category.GetAllCategories())
+                        {
+                            <li><a asp-controller="Product" asp-action="GetByCategory" asp-route-id="@item.CategoryID">@item.CategoryName</a></li>
+                        }
                     </ul>
                 </section>
             </div>

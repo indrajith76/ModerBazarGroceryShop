@@ -2,21 +2,65 @@
 @{
     ViewData["Title"] = "GetAllProducts";
 }
+<style>
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 84%;
+        width: 100%;
+        opacity: 0;
+        transition: .2s ease;
+        background-color: #fdd670;
+        box-shadow: inset 0 0 40px white;
+    }
 
-<div class="py-5 bg-light">
+    .carcontain:hover .overlay {
+        opacity: 0.5;
+    }
+    .DelBtntext {
+        color: Black;
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    #addtobag {
+        width: 100%;
+        background: #fdd670;
+        border-color: #fdd670;
+    }
+        #addtobag:hover {
+            background: #edc14e;
+        }
+
+</style>
+<div class="py-3 bg-light">
     <div class="container">
-        <h3 class="display-4">GetAllProducts</h3>
+        <h3 class="display-7" style="color: #aaa8a8">@Model?.FirstOrDefault()?.ProductCategories</h3>
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="@item.Image" width="255" height="255" class="card-img-top" alt="..." asp-append-version="true" >
-                        <div class="card-body">
-                            <h6 class="card-title">@item.ProductName</h6>
-                            <p class="card-text">@item.ProductDetails</p>
-                            <a href="#" class="btn btn-primary">add to bag</a>
-                            <a href="getproduct/@item.ProductID" class="btn btn-primary">Details</a>
+                <div class="col-6 col-md-3 col-lg-3">
+                    <div class="card mb-4 shadow-sm carcontain">
+                        <img src="@item.Image" width="255" style="height:200px" class="card-img-top" alt="..." asp-append-version="true">
+                        <div class="card-body" style="padding-bottom:10px; ">
+                            <p class="card-title" style="color: #8e8e8e">@item.ProductName</p>
+                            <p class="card-title text-center" style="font-size: 14px; margin: 0; color: #aaa8a8">@item.Quantity</p>
+                            <p class="card-text text-center" style="font-size: 20px; color: #aaa8a8; margin: 0 0 7px 0">৳ <strong>@item.Price</strong></p>
+                            <a href="#" class="btn btn-primary" id="addtobag">add to bag</a>
+                            <a asp-controller="Product" asp-action="getproduct" asp-route-id="@item.ProductID">
+                                <div class="overlay">
+                                    <div class="DelBtntext"><span style="">Details</span></div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

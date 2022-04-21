@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using ModerBazarGroceryShop.Models;
 using ModerBazarGroceryShop.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,9 +13,12 @@ namespace ModerBazarGroceryShop.Controllers
     public class CategoryController : Controller
     {
         private readonly CategoryRepository _categoryRepository = null;
-        public CategoryController(CategoryRepository categoryRepository)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public CategoryController(CategoryRepository categoryRepository,
+            IWebHostEnvironment webHostEnvironment)
         {
             _categoryRepository = categoryRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<ViewResult> GetAllCategories()
         {
@@ -26,15 +31,7 @@ namespace ModerBazarGroceryShop.Controllers
             var data = await _categoryRepository.EditCategoryById(id);
             return View(data);
         }
-        //public ViewResult GetCategoryById(int id)
-        //{
-        //    var data = _categoryRepository.GetCategoryById(id);
-        //    return View(data);
-        //}
-        //public List<CategoryModel> SearchCategories(string categoryName)
-        //{
-        //    return _categoryRepository.SearchCategories(categoryName);
-        //}
+        
         public ViewResult AddNewCategory(bool isSuccess = false, int categorytId = 0)
         {
             ViewBag.IsSuccess = isSuccess;
@@ -43,17 +40,33 @@ namespace ModerBazarGroceryShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNewCategory(CategoryModel categoryModel)
+        public async Task<IActionResult> AddNewCategory(CategoryModel categoryModel)
         {
-            int id = _categoryRepository.AddNewCategory(categoryModel);
-            if (id > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNewCategory), new { isSuccess = true, categorytId = id });
+                if (categoryModel.CatImage != null)
+                {
+                    string folder = "image/CategoryImg/";
+                    folder += Guid.NewGuid().ToString() + "_" + categoryModel.CatImage.FileName;
+
+                    categoryModel.CategoryImage = "/" + folder;
+
+                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+
+                    await categoryModel.CatImage.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+                int id = _categoryRepository.AddNewCategory(categoryModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewCategory), new { isSuccess = true, categorytId = id });
+                }
+
             }
+            
             return View();
         }
 
-        public ViewResult EditNewCategory(bool isSuccess = false, int categorytId = 0)
+        public ViewResult SaveEditCategory(bool isSuccess = false, int categorytId = 0)
         {
             ViewBag.IsSuccess = isSuccess;
             ViewBag.CategoryID = categorytId;
@@ -61,11 +74,26 @@ namespace ModerBazarGroceryShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditNewCategory(CategoryModel categoryModel)
+        public async Task<IActionResult> SaveEditCategory(CategoryModel categoryModel)
         {
-            _categoryRepository.EditNewCategory(categoryModel);
-            
-            return RedirectToAction(nameof(GetAllCategories));
+            if (ModelState.IsValid)
+            {
+                if (categoryModel.CatImage != null)
+                {
+                    string folder = "image/CategoryImg/";
+                    folder += Guid.NewGuid().ToString() + "_" + categoryModel.CatImage.FileName;
+
+                    categoryModel.CategoryImage = "/" + folder;
+
+                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+
+                    await categoryModel.CatImage.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+                await _categoryRepository.SaveEditCategoryAsync(categoryModel);
+
+                return RedirectToAction(nameof(GetAllCategories));
+            }
+            return View(categoryModel);
         }
 
         public async Task<IActionResult> DeleteCategory(int categorytId = 0)

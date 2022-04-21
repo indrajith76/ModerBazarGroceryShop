@@ -4,14 +4,18 @@
 }
 
 <div class="container">
-    <h3 class="display-4">EditCategory</h3>
+    <h3 class="display-10">Edit Category</h3>
     <hr />
-    <form method="post" asp-action="EditNewCategory" asp-controller="Category">
+    <form method="post" enctype="multipart/form-data" asp-action="SaveEditCategory" asp-controller="Category">
         <div class="row">
             <input type="hidden" asp-for="CategoryID" />
             <div class="form-group col-md-12">
                 <label asp-for="CategoryName"></label>
                 <input asp-for="CategoryName" value="@Model.CategoryName" class="form-control" />
+            </div>
+            <div class="col-md-12">
+                <label asp-for="CatImage" class="form-label"></label>
+                <input asp-for="CatImage" class="form-control"><img src="@Model.CategoryImage" width="100" />
             </div>
         </div><br />
         <div class="row">

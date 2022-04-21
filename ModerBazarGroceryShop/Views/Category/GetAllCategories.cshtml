@@ -11,6 +11,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Category Image</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -20,8 +21,8 @@
                 <tr>
                     <th scope="row">@item.CategoryID</th>
                     <td>@item.CategoryName</td>
+                    <td><img src="@item.CategoryImage" width="50" /></td>
                     <td>
-                        @**@
                         <a asp-action="editcategory" asp-route-id="@item.CategoryID" class="btn btn-warning">Edit</a>
                         <a asp-action="deletecategory" asp-route-categorytId="@item.CategoryID" class="btn btn-danger">Delete</a>
                     </td>

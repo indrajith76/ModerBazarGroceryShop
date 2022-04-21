@@ -79,9 +79,39 @@ namespace ModerBazarGroceryShop.Repository
                 Image = product.Image
             }).FirstOrDefaultAsync();
         }
-        public List<ProductModel> SearchProduct(string productName,string brandName)
+        public async Task<List<ProductModel>> GetProductByCatId(int id)
         {
-            return null;
+            return await _context.Products.Where(x => x.CategoryID == id).Select(product => new ProductModel()
+            {
+                ProductID = product.ProductID,
+                ProductName = product.ProductName,
+                BrandName = product.BrandName,
+                ProductCategoriesId = product.CategoryID,
+                ProductCategories = product.Categories.CategoryName,
+                InStock = product.InStock,
+                ProductDetails = product.ProductDetails,
+                Quantity = product.Quantity,
+                Price = product.Price,
+                Image = product.Image
+            }).ToListAsync();
+        }
+
+
+        public async Task<List<ProductModel>> SearchProduct(string searchText)
+        {
+            return await _context.Products.Where(x => x.ProductName.Contains(searchText) || x.BrandName.Contains(searchText)).Distinct().Select(product => new ProductModel()
+            {
+                ProductID = product.ProductID,
+                ProductName = product.ProductName,
+                BrandName = product.BrandName,
+                ProductCategoriesId = product.CategoryID,
+                ProductCategories = product.Categories.CategoryName,
+                InStock = product.InStock,
+                ProductDetails = product.ProductDetails,
+                Quantity = product.Quantity,
+                Price = product.Price,
+                Image = product.Image
+            }).ToListAsync();
         }
 
         public async Task<ProductModel> EditProductById(int id)
@@ -107,7 +137,7 @@ namespace ModerBazarGroceryShop.Repository
             return null;
         }
 
-        public int EditProducts(ProductModel model)
+        public async Task<int> EditProductsAsync(ProductModel model)
         {
             var newProduct = new Products()
             {
@@ -122,7 +152,7 @@ namespace ModerBazarGroceryShop.Repository
                 Image = model.Image
             };
             _context.Products.Update(newProduct);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return newProduct.ProductID;
         }
