@@ -407,6 +407,7 @@ D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\net
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.TagHelpers.input.cache
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.TagHelpers.output.cache
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.RazorCoreGenerate.cache
+D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Category\AddNewCategory.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Category\EditCategory.cshtml.g.cs
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Category\GetAllCategories.cshtml.g.cs
@@ -430,5 +431,3 @@ D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\net
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.dll
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.pdb
 D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.genruntimeconfig.cache
-D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\ModerBazarGroceryShop.csproj.AssemblyReference.cache
-D:\Alchemy Softwere\C#\ModerBazarGroceryShop\ModerBazarGroceryShop\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
